@@ -1,1 +1,42 @@
 news-central-frontend/
+# Ignorer les dépendances Node.js
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Ignorer les fichiers d’environnement
+.env
+.env.local
+.env.*.local
+
+# Ignorer les logs et fichiers temporaires
+logs/
+*.log
+*.log.*
+debug.log
+out.log
+
+# Ignorer les fichiers système
+.DS_Store
+Thumbs.db
+
+# Ignorer les fichiers de build
+dist/
+build/
+.cache/
+.tmp/
+
+# Ignorer les fichiers IDE/Éditeurs de texte
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+
+# Ignorer les sous-dossiers spécifiques
+news-central-frontend/
+news-central-backend/
