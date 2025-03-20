@@ -7,6 +7,7 @@ import NewsGrid from './components/NewsGrid';
 import Footer from './components/Footer';
 import './App.css';
 
+
 function App() {
   const [articles] = useState([
     {
@@ -92,15 +93,35 @@ function App() {
     }
   ]);
 
+  const [filteredArticles, setFilteredArticles] = useState(articles);
+  const [filters, setFilters] = useState({
+    query: "",
+    category: "",
+    sortBy: "date",
+    startDate: "",
+    endDate: "",
+  });
+
+  const handleSearch = (newFilters) => {
+    setFilters((prev) => ({ ...prev, ...newFilters }));
+
+    const filtered = articles.filter((article) => {
+      return (
+        (!newFilters.query || article.title.toLowerCase().includes(newFilters.query.toLowerCase())) &&
+        (!newFilters.category || article.category.toLowerCase() === newFilters.category.toLowerCase()) &&
+        (!newFilters.startDate || new Date(article.date) >= new Date(newFilters.startDate)) &&
+        (!newFilters.endDate || new Date(article.date) <= new Date(newFilters.endDate))
+      );
+    });
+
+    setFilteredArticles(filtered);
+  };
+
   return (
     <div className="app">
       <Header />
       <Navigation />
-      <MainContent />
-      <NewsGrid articles={articles} />
-      <div className="load-more-container">
-        <button className="load-more-btn">LOAD MORE</button>
-      </div>
+      <MainContent articles={articles} />
       <Footer />
     </div>
   );
