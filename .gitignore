@@ -1,4 +1,3 @@
-news-central-frontend/
 # Ignorer les dépendances Node.js
 node_modules/
 npm-debug.log*
@@ -36,7 +35,3 @@ build/
 *.swp
 *.swo
 *.swn
-
-# Ignorer les sous-dossiers spécifiques
-news-central-frontend/
-news-central-backend/
