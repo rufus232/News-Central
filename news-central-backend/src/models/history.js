@@ -7,7 +7,7 @@ const historySchema = new mongoose.Schema({
     articleContent: String,
     articleUrl: String,
     source: String,
-    pubDate: Date,
+    publishedAt: Date,
     searchedKeyword: String,
     searchedCategory: String,
     searchedString: String,

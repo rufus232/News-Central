@@ -2,6 +2,7 @@ const express = require('express');
 const connectDB = require('./src/config/mongo'); // Import de la connexion MongoDB
 require('dotenv').config();
 const cors = require('cors');
+const newsRoutes = require('./src/routes/news');
 
 const app = express();
 
@@ -16,7 +17,9 @@ app.use(
     })
 );
 
-app.get('/', (req, res) => {
+app.use("/api/news", newsRoutes);
+
+app.get('/api', (req, res) => {
     res.send('🚀 API en cours d\'exécution...');
 });
 
