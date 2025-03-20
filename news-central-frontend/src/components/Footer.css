@@ -1,0 +1,120 @@
+/* Footer Styles */
+footer {
+    background-color: #f8f9fa;
+  }
+  
+  .main-footer {
+    padding: 50px 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .footer-widgets {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+  
+  .footer-widget h4 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: var(--dark-color);
+    position: relative;
+    padding-bottom: 10px;
+  }
+  
+  .footer-widget h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--primary-color);
+  }
+  
+  .footer-widget ul {
+    list-style: none;
+  }
+  
+  .footer-widget ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-widget p {
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+  
+  .footer-logo {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer-logo img {
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  .newsletter-form {
+    display: flex;
+    margin-top: 15px;
+  }
+  
+  .newsletter-form input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 3px 0 0 3px;
+  }
+  
+  .newsletter-form button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 0 3px 3px 0;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .bottom-footer {
+    padding: 20px 0;
+  }
+  
+  .bottom-footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+  }
+  
+  .bottom-links a {
+    margin-left: 15px;
+    color: var(--text-color);
+  }
+  
+  @media (max-width: 992px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-widgets {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .footer-widgets {
+      grid-template-columns: 1fr;
+    }
+    
+    .nav-links {
+      display: none;
+    }
+  }
