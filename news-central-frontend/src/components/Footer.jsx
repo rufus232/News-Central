@@ -9,8 +9,8 @@ const Footer = () => {
             <div className="footer-widgets">
               <div className="footer-widget about-widget">
                 <div className="footer-logo">
-                  <img src="/images/logo.png" alt="ECHOIZ" />
-                  <span>ECHOIZ</span>
+                <img src="https://i.pinimg.com/736x/e9/05/88/e905887f0889e833e7d02cb7e8978676.jpg" alt="ECHOIZ" />
+              <span>News Central</span>
                 </div>
                 <p>Aliquam ac officiis officisl clasa licinila magna platea sollicitutin phaselius commodo acsm.</p>
                 <div className="social-links">
