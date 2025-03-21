@@ -4,7 +4,7 @@ const ArticleCard = ({ article }) => {
     return (
       <div className="article-card">
         <div className="article-image">
-        <img src={article.imageUrl} alt={article.title} />
+        <img src={article.imageUrl || "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png"} alt={article.title} />
           <span className="category">{article.category}</span>
         </div>
         <div className="article-content">
