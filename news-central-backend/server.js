@@ -1,24 +1,29 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const connectDB = require('./src/config/mongo'); // Import de la connexion MongoDB
 require('dotenv').config();
-const authRoutes = require('./routes/auth');
 const cors = require('cors');
-
+const newsRoutes = require('./src/routes/news');
 
 const app = express();
-app.use(cors());
 
+connectDB();
 
-// ✅ Middleware pour parser le JSON (sinon req.body sera undefined)
 app.use(express.json());
 
-// Connexion à MongoDB
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
+app.use(
+    cors({
+        origin: "*",
+        methods: ["GET", "POST", "DELETE", "PATCH", "PUT"],
+    })
+);
 
-// Utiliser les routes d'authentification
+app.use("/api/news", newsRoutes);
 app.use('/api/auth', authRoutes);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.get('/api', (req, res) => {
+    res.send('🚀 API en cours d\'exécution...');
+});
+
+// Démarrer le serveur
+const PORT = process.env.PORT;
+app.listen(PORT, () => console.log(`✅ Serveur lancé sur http://localhost:${PORT}`));
