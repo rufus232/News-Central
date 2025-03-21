@@ -1,7 +1,38 @@
+import { useState } from 'react';
 import './Navigation.css';
 
 
 const Navigation = () => {
+   // État pour gérer l'image de fond
+    const [backgroundImage, setBackgroundImage] = useState(
+      "url('https://i.pinimg.com/736x/ee/d2/3e/eed23e06ccb7daf40cb7d7ad77b13d1c.jpg')" // Image par défaut
+    );
+  
+    // Fonction pour changer l'image en fonction du filtre
+    const handleNavigationClick = (category) => {
+      switch (category) {
+        case 'HOME':
+          setBackgroundImage("url('https://i.pinimg.com/736x/ee/d2/3e/eed23e06ccb7daf40cb7d7ad77b13d1c.jpg')");
+          break;
+        case 'ENTERTAINMENT':
+          setBackgroundImage("url('https://example.com/entertainment.jpg')");
+          break;
+        case 'BUSINESS':
+          setBackgroundImage("url('https://example.com/business.jpg')");
+          break;
+        case 'LIFESTYLE':
+          setBackgroundImage("url('https://example.com/lifestyle.jpg')");
+          break;
+        case 'TECHNOLOGY':
+          setBackgroundImage("url('https://example.com/technology.jpg')");
+          break;
+        case 'PAGES':
+          setBackgroundImage("url('https://example.com/pages.jpg')");
+          break;
+        default:
+          setBackgroundImage("url('https://i.pinimg.com/736x/ee/d2/3e/eed23e06ccb7daf40cb7d7ad77b13d1c.jpg')");
+      }
+    };
     return (
       <nav className="main-nav">
         <div className="container">
@@ -13,12 +44,12 @@ const Navigation = () => {
           </div>
           <div className="nav-links">
             <ul>
-              <li><a href="#">HOME</a></li>
-              <li><a href="#">ENTERTAINMENT</a></li>
-              <li><a href="#">BUSINESS</a></li>
-              <li><a href="#">LIFESTYLE</a></li>
-              <li><a href="#">TECHNOLOGY</a></li>
-              <li><a href="#">PAGES</a></li>
+              <li><a onClick={() => handleNavigationClick('HOME')} href="#">HOME</a></li>
+              <li><a onClick={() => handleNavigationClick('ENTERTAINMENT')} href="#">ENTERTAINMENT</a></li>
+              <li><a onClick={() => handleNavigationClick('BUSINESS')} href="#">BUSINESS</a></li>
+              <li><a onClick={() => handleNavigationClick('LIFESTYLE')} href="#">LIFESTYLE</a></li>
+              <li><a onClick={() => handleNavigationClick('TECHNOLOGY')} href="#">TECHNOLOGY</a></li>
+              <li><a onClick={() => handleNavigationClick('PAGES')} href="#">PAGES</a></li>
             </ul>
           </div>
           <div className="social-links">
