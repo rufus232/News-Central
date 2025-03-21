@@ -13,7 +13,11 @@ const fetchNewsFromNewsAPI = async (
     try {
         let apiUrl = `https://newsapi.org/v2/everything?apiKey=${process.env.NEWS_API_KEY}`;
 
-        if (keyword) apiUrl += `&q=${encodeURIComponent(keyword)}`;
+        if (keyword) {
+            apiUrl += `&q=${encodeURIComponent(keyword)}`
+        } else {
+            apiUrl += `&q=latest`
+        }
 
         if (category) {
             apiUrl = `https://newsapi.org/v2/top-headlines?category=${category}&apiKey=${process.env.NEWS_API_KEY}`;
