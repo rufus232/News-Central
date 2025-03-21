@@ -32,7 +32,7 @@ const Login = () => {
 
       // Redirection vers la page de connexion après 3 secondes
       setTimeout(() => {
-        navigate('/register');// Redirige vers la page homepage
+        navigate('/');// Redirige vers la page homepage
       }, 2000);
       // Redirection ou mise à jour du state global
     } catch (err) {

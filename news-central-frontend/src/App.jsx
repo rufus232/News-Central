@@ -1,35 +1,23 @@
-import React from 'react';
+// App.jsx - Point d'entrée principal avec routage
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Homepage from './components/Homepage';
 import Login from './components/login';
 import Register from './components/register';
+import './App.css';
 
-// Vous pouvez ajouter d'autres composants/pages ici
-// import Home from './pages/home';
-// import Articles from './pages/articles';
-
-const App = () => {
-  // Vous pourriez avoir un état pour vérifier si l'utilisateur est authentifié
-  // const [isAuthenticated, setIsAuthenticated] = useState(false);
-  
+function App() {
   return (
     <Router>
-      <Routes>
-        {/* Route par défaut - redirige vers la page de connexion */}
-        <Route path="/" element={<Navigate to="/login" replace />} />
-        
-        {/* Routes d'authentification */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        
-        {/* Vous pourriez ajouter d'autres routes ici */}
-        {/* <Route path="/home" element={isAuthenticated ? <Home /> : <Navigate to="/login" />} /> */}
-        {/* <Route path="/articles" element={isAuthenticated ? <Articles /> : <Navigate to="/login" />} /> */}
-        
-        {/* Route pour gérer les URL inexistantes */}
-        <Route path="*" element={<Navigate to="/login" replace />} />
-      </Routes>
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </div>
     </Router>
   );
-};
+}
 
 export default App;
