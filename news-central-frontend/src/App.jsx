@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { Routes, Route } from "react-router-dom";
 import Header from './components/Header';
 import Navigation from './components/Navigation';
 import MainContent from './components/MainContent';
-import NewsGrid from './components/NewsGrid';
 import Footer from './components/Footer';
+import UserProfile from "./components/UserProfile";
 import './App.css';
 
 function App() {
@@ -111,12 +112,24 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <Header />
-      <Navigation onSearch={handleSearch} />
-      <MainContent articles={filteredArticles} />
-      <Footer />
-    </div>
+    
+      <div className="app">
+        <Header />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Navigation onSearch={handleSearch} />
+                <MainContent articles={filteredArticles} />
+                <Footer />
+              </>
+            }
+          />
+          <Route path="/profile" element={<UserProfile />} />
+        </Routes>
+      </div>
+    
   );
 }
 
