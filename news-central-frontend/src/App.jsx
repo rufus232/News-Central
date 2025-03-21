@@ -3,7 +3,10 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Homepage from './components/Homepage';
 import Login from './components/login';
 import Register from './components/register';
+import Navigation from './components/Navigation';
 import './App.css';
+
+
 
 function App() {
   return (

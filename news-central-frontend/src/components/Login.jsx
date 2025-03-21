@@ -15,7 +15,7 @@ const Login = () => {
     setLoading(true);
     
     try {
-      const response = await fetch('http://localhost:5001/api/auth/login', { // Remplace avec l'URL de ton backend
+      const response = await fetch('http://localhost:5000/api/auth/login', { // Remplace avec l'URL de ton backend
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),

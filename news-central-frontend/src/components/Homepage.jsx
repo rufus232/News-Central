@@ -91,12 +91,30 @@ function Homepage() {
     }
   ]);
   
+  const [filteredArticles, setFilteredArticles] = useState(articles);
+
+  // Fonction de filtrage des articles
+  const handleSearch = (filters) => {
+    let filtered = articles.filter((article) =>
+      (!filters.query || article.title.toLowerCase().includes(filters.query.toLowerCase())) &&
+      (!filters.category || article.category.toLowerCase() === filters.category.toLowerCase()) &&
+      (!filters.startDate || new Date(article.date) >= new Date(filters.startDate)) &&
+      (!filters.endDate || new Date(article.date) <= new Date(filters.endDate))
+    );
+
+    if (filters.sortBy === "date") {
+      filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
+
+    setFilteredArticles(filtered);
+  };
+
   return (
     <div className="homepage">
       <Header />
-      <Navigation />
-      <MainContent />
-      <NewsGrid articles={articles} />
+      <Navigation onSearch={handleSearch}/>
+      <MainContent articles={filteredArticles} />
+      <NewsGrid articles={filteredArticles} />
       <div className="load-more-container">
         <button className="load-more-btn">LOAD MORE</button>
       </div>
