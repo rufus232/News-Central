@@ -7,7 +7,7 @@ const NewsGrid = ({ articles }) => {
       <div className="container">
         <div className="grid">
           {articles.map(article => (
-            <ArticleCard key={article.id} article={article} />
+            <ArticleCard key={article._id || article.title} article={article} />
           ))}
         </div>
       </div>

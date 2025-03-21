@@ -18,6 +18,7 @@ logs/
 build/
 dist/
 *.tsbuildinfo
+.DS_Store
 
 # Temporary files
 tmp/

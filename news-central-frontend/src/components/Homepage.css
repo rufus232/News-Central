@@ -1,0 +1,24 @@
+.load-more-container {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .load-more-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .load-more-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .load-more-btn:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+  }
+  
