@@ -1,6 +1,7 @@
 const express = require("express");
 const {fetchNewsFromNewsAPI} = require("../services/newsapiService");
 const {fetchNewsFromNyTimes} = require("../services/nytService");
+const {fetchNewsFromGNews} = require("../services/gnewsService");
 
 const router = express.Router();
 
@@ -10,8 +11,9 @@ router.get("/", async (req, res) => {
 
         console.log(req.query)
         const [newsAPI] = await Promise.all([
-            fetchNewsFromNewsAPI(popularity, keyword, category, startDate, endDate, source, url, searchString),
+            // fetchNewsFromNewsAPI(popularity, keyword, category, startDate, endDate, source, url, searchString),
             fetchNewsFromNyTimes(popularity, keyword, category, startDate, endDate, source, url, searchString),
+            // fetchNewsFromGNews(popularity, keyword, category, startDate, endDate, source, url, searchString),
         ]);
 
         let allArticles = [...newsAPI];

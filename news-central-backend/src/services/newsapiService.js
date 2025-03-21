@@ -38,7 +38,7 @@ const fetchNewsFromNewsAPI = async (
         let articles = response.data.articles.map(article => ({
             title: article.title,
             description: article.description,
-            imageUrl: article.urlToImage,
+            imageUrl: article.urlToImage || null,
             url: article.url,
             source: article.source.name,
             publishedAt: article.publishedAt,
