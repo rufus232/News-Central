@@ -1,29 +1,46 @@
 /* Header Styles */
 .top-header {
-    background-color: var(--dark-color);
-    color: #fff;
-    padding: 10px 0;
-  }
-  
-  .top-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .top-links a {
-    color: #fff;
-    margin-right: 15px;
-    font-size: 14px;
-  }
-  
-  .subscription-btn {
-    background-color: var(--primary-color);
-    color: #fff;
-    border: none;
-    padding: 5px 15px;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: bold;
-  }
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 10px 0;
+}
+
+.top-header .container {
+  display: flex;
+  justify-content: center; /* ✅ Centre tous les éléments */
+  align-items: center;
+  position: relative; /* ✅ Permet de positionner l'avatar */
+}
+
+.subscription-btn {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* ✅ Centrer la date */
+.date-info {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Avatar du user */
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  position: absolute; /* ✅ Position absolue pour l'aligner à droite */
+  right: 20px; /* ✅ Ajustement */
+}
+
+.user-avatar:hover {
+  transform: scale(1.1);
+}

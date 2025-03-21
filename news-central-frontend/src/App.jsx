@@ -4,6 +4,8 @@ import Homepage from './components/Homepage';
 import Login from './components/login';
 import Register from './components/register';
 import './App.css';
+import UserProfile from './components/UserProfile';
+
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<UserProfile />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
