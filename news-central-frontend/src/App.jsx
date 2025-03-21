@@ -1,4 +1,3 @@
-// App.jsx - Point d'entrée principal
 import { useState } from 'react';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
@@ -6,7 +5,6 @@ import MainContent from './components/MainContent';
 import NewsGrid from './components/NewsGrid';
 import Footer from './components/Footer';
 import './App.css';
-
 
 function App() {
   const [articles] = useState([
@@ -79,7 +77,7 @@ function App() {
       title: 'Polaroid Gets the Museum It\'s Long Deserved',
       image: 'https://i.pinimg.com/474x/88/ab/fd/88abfdebfb23048d9156fce8c5c238d0.jpg',
       content: 'Sem qrisus senevet laculs cras mattis sollicitudin tristique. Turpis scelerisque vitae phaselius nisi pretium. Urna tempor vehicula nascetur effictur euismod feugiat eleifendotu mollis laculs suscipit',
-      date: 'July 18, 2023',
+      date: 'July 18, 2025',
       comments: 0
     },
     {
@@ -88,31 +86,26 @@ function App() {
       title: 'Cruising Solo: 5 Tips For Solo Cruise Travelers',
       image: 'https://i.pinimg.com/474x/b8/ba/38/b8ba38e4935eb56131d22892239e0b08.jpg',
       content: 'Sem qrisus senevet laculs cras mattis sollicitudin tristique. Turpis scelerisque vitae phaselius nisi pretium. Urna tempor vehicula nascetur effictur euismod feugiat eleifendotu mollis laculs suscipit',
-      date: 'July 18, 2023',
+      date: 'July 02 ,2025',
       comments: 0
     }
   ]);
 
   const [filteredArticles, setFilteredArticles] = useState(articles);
-  const [filters, setFilters] = useState({
-    query: "",
-    category: "",
-    sortBy: "date",
-    startDate: "",
-    endDate: "",
-  });
 
-  const handleSearch = (newFilters) => {
-    setFilters((prev) => ({ ...prev, ...newFilters }));
+  const handleSearch = (filters) => {
+    let filtered = articles.filter((article) => 
+      (!filters.query || article.title.toLowerCase().includes(filters.query.toLowerCase())) &&
+      (!filters.category || article.category.toLowerCase() === filters.category.toLowerCase()) &&
+      (!filters.startDate || new Date(article.date) >= new Date(filters.startDate)) &&
+      (!filters.endDate || new Date(article.date) <= new Date(filters.endDate))
+    );
 
-    const filtered = articles.filter((article) => {
-      return (
-        (!newFilters.query || article.title.toLowerCase().includes(newFilters.query.toLowerCase())) &&
-        (!newFilters.category || article.category.toLowerCase() === newFilters.category.toLowerCase()) &&
-        (!newFilters.startDate || new Date(article.date) >= new Date(newFilters.startDate)) &&
-        (!newFilters.endDate || new Date(article.date) <= new Date(newFilters.endDate))
-      );
-    });
+    if (filters.sortBy === "date") {
+      filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+    } else if (filters.sortBy === "popularity") {
+      filtered.sort((a, b) => b.popularity - a.popularity);
+    }
 
     setFilteredArticles(filtered);
   };
@@ -120,8 +113,8 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <Navigation />
-      <MainContent articles={articles} />
+      <Navigation onSearch={handleSearch} />
+      <MainContent articles={filteredArticles} />
       <Footer />
     </div>
   );

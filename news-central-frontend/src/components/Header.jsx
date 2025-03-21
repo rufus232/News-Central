@@ -1,22 +1,35 @@
-import './Header.css';
-
+import { useEffect, useState } from "react";
+import "./Header.css";
 
 const Header = () => {
-    return (
-      <header className="top-header">
-        <div className="container">
-          <div className="date-info">
-            <span>Thu, 20 July 2023</span>
-          </div>
-          <div className="top-links">
-            <a href="#">About Us</a>
-            <a href="#">Contact</a>
-            <a href="#">Advertise</a>
-            <button className="subscription-btn">SUBSCRIPTION</button>
-          </div>
+  const [currentDate, setCurrentDate] = useState("");
+
+  useEffect(() => {
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString("fr-FR", {
+      weekday: "short",
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    });
+    setCurrentDate(formattedDate);
+  }, []);
+
+  return (
+    <header className="top-header">
+      <div className="container">
+        <div className="date-info">
+          <span>{currentDate}</span>
         </div>
-      </header>
-    );
-  };
-  
-  export default Header;
+        <nav className="top-links">
+          <a href="#">À Propos</a>
+          <a href="#">Contact</a>
+          <a href="#">Publicité</a>
+          <button className="subscription-btn">S'abonner</button>
+        </nav>
+      </div>
+    </header>
+  );
+};
+
+export default Header;
