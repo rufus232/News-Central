@@ -1,0 +1,42 @@
+/* Navigation Styles */
+.main-nav {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .main-nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo a {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .logo img {
+    height: 120px;
+    margin-right: 10px;
+  }
+  
+  .nav-links ul {
+    display: flex;
+    list-style: none;
+  }
+  
+  .nav-links li {
+    margin: 0 15px;
+  }
+  
+  .nav-links a {
+    font-weight: 500;
+    font-size: 14px;
+  }
+  
+  .social-links a {
+    margin-left: 15px;
+    color: var(--text-color);
+  }
