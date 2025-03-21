@@ -2,30 +2,30 @@ const axios = require("axios");
 const dayjs = require('dayjs');
 
 const fetchNewsFromNewsAPI = async (
-    keyword = "latest",
+    keyword,
     category,
     startDate,
     endDate,
     source,
     url,
-    sortBy = "popularity",
     searchString
 ) => {
     try {
-        let apiUrl = `https://newsapi.org/v2/everything?q=${keyword}&sortBy=${sortBy}&apiKey=${process.env.NEWS_API_KEY}`;
+        let apiUrl = `https://newsapi.org/v2/everything?apiKey=${process.env.NEWS_API_KEY}`;
+
+        if (keyword) apiUrl += `&q=${encodeURIComponent(keyword)}`;
 
         if (category) {
             apiUrl = `https://newsapi.org/v2/top-headlines?category=${category}&apiKey=${process.env.NEWS_API_KEY}`;
         }
 
-        if (searchString) apiUrl += `&q=${encodeURIComponent(searchString)}`;
-
-        if (source) apiUrl += `&sources=${encodeURIComponent(source)}`;
-
         if (startDate) apiUrl += `&from=${dayjs(startDate).format('YYYY-MM-DD')}`;
         if (endDate) apiUrl += `&to=${dayjs(endDate).format('YYYY-MM-DD')}`;
 
-        console.log(apiUrl);
+        if (source) apiUrl += `&sources=${encodeURIComponent(source)}`;
+
+        if (searchString) apiUrl += `&q=${encodeURIComponent(searchString)}&searchIn=content`;
+
         const response = await axios.get(apiUrl);
 
         let articles = response.data.articles.map(article => ({

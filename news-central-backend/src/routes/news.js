@@ -5,11 +5,11 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
     try {
-        const {popularity, keyword, category, startDate, endDate, searchString, source, url } = req.query;
+        const {popularity, keyword, category, startDate, endDate, searchString, source, url} = req.query;
 
         console.log(req.query)
         const [newsAPI] = await Promise.all([
-            fetchNewsFromNewsAPI(keyword, category, startDate, endDate, searchString, source, url),
+            fetchNewsFromNewsAPI(keyword, category, startDate, endDate, source, url, searchString),
         ]);
 
         let allArticles = [...newsAPI];
