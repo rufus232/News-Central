@@ -2,6 +2,7 @@ const axios = require("axios");
 const dayjs = require('dayjs');
 
 const fetchNewsFromNewsAPI = async (
+    popularity,
     keyword,
     category,
     startDate,
@@ -12,6 +13,8 @@ const fetchNewsFromNewsAPI = async (
 ) => {
     try {
         let apiUrl = `https://newsapi.org/v2/everything?apiKey=${process.env.NEWS_API_KEY}`;
+
+        if (popularity) apiUrl += `&sortBy=popularity`
 
         if (keyword) {
             apiUrl += `&q=${encodeURIComponent(keyword)}`
